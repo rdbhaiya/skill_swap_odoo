@@ -28,7 +28,7 @@ The Skill Swap Platform is a mini application where users can list their own ski
 | Name             | Role                | Email                     |
 |------------------|---------------------|---------------------------|
 | Shubham Singh    | Backend Developer   | shubhamking201@gmail.com  |
-| Rupam Das        | Team Lead / Reviewer| 111rupamdas@gmail.com     |
+| Rupam Das        | Team Lead           | 111rupamdas@gmail.com     |
 | Anirban Mondal   | Frontend Dev        | anirban4stuti40@gmail.com |
 
 ---
