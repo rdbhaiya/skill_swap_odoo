@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Profile.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1 class="logo">
+        <img src="{{ user.profile_photo or '/static/default-avatar.png' }}" alt="User" />
+        <span>Skilmate</span>
+      </h1>
+      <nav class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <img src="{{ user.profile_photo or '/static/default-avatar.png' }}" alt="Avatar" class="avatar" />
+      </nav>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <div class="left">
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+
+      <div class="section">
+        <h3>Skills Offered</h3>
+        {% for skill in user.skills_offered.split(',') if user.skills_offered %}
+          <p class="tag">{{ skill }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="section">
+        <h3>Skills Wanted</h3>
+        {% for skill in user.skills_wanted.split(',') if user.skills_wanted %}
+          <p class="tag">{{ skill }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="section">
+        <h3>Availability</h3>
+        <p>{{ user.availability }}</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="photo-placeholder">
+        <img src="{{ user.profile_photo or '/static/default-avatar.png' }}" alt="Profile" width="150">
+      </div>
+      <button class="request-btn" onclick="event.preventDefault()">Request</button>
+    </div>
+  </div>
+</body>
+</html>

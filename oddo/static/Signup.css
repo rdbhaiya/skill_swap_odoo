@@ -1,0 +1,273 @@
+/* Global Dark Theme */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Main Layout */
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 40px;
+  background: #1e1e1e;
+}
+
+/* Form Card */
+.form-box {
+  background: #1a1a1a;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  max-width: 450px;
+  width: 100%;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00e6e6;
+}
+
+/* Input Groups */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+.tag-input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  border-radius: 25px;
+  font-size: 14px;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+
+}
+
+/* Placeholder Color */
+::placeholder {
+  color: #888;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 50%;
+  background-size: 18px;
+}
+
+/* Register Button */
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #00a3b2;
+}
+
+/* Toggle Switch */
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #555;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #00e676;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Profile Photo */
+.profile-photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-photo-container img {
+  width: 160px;
+  height: 160px;
+  max-width: 100%;
+  border-radius: 50%;
+  border: 3px solid #444;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.profile-photo-container img:hover {
+  opacity: 0.8;
+}
+
+.photo-actions {
+  margin-top: 10px;
+}
+
+.photo-actions button {
+  background: transparent;
+  border: none;
+  color: #ff5252;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.photo-actions button:hover {
+  color: #ff0000;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 480px) {
+  .profile-photo-container img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .photo-actions button {
+    font-size: 13px;
+  }
+}
+
+
+/* Tag System */
+.tag-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  background-color: #2e2e2e;
+  border: 1px solid #666;
+  padding: 6px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 8px;
+  color: #f0f0f0;
+}
+
+.tag .remove-tag {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #ff5c5c;
+  cursor: pointer;
+}
+
+/* Checkbox & Terms */
+.checkbox-container {
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Terms Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(20, 20, 20, 0.7);
+}
+
+.modal-content {
+  background-color: #222;
+  color: #f0f0f0;
+  margin: 12% auto;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,255,255,0.1);
+}
+
+.close-modal {
+  color: #ff5252;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.terms-link {
+  color: #00e6e6;
+  text-decoration: underline;
+  cursor: pointer;
+}

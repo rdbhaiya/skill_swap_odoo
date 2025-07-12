@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Signup.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h2>REGISTRATION FORM</h2>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+            {% for msg in messages %}
+              <li style="color:red;">{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" enctype="multipart/form-data" action="{{ url_for('signup') }}">
+        <!-- Profile Photo -->
+        <div class="profile-photo-container">
+          <label for="photo-upload">
+            <img id="profile-img" src="https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" alt="Profile" />
+          </label>
+          <input type="file" name="profile_photo" id="photo-upload" accept="image/*" style="display: none;">
+          <div class="photo-actions">
+            <button id="remove-photo" type="button">Remove</button>
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="input-group">
+          <input type="text" name="first_name" placeholder="First Name" required>
+          <input type="text" name="last_name" placeholder="Last Name" required>
+        </div>
+
+        <!-- Email / Password -->
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+        <!-- Location -->
+        <input type="text" name="location" placeholder="Location" required>
+
+        <!-- Skills Offered -->
+        <label>Skills Offered</label>
+        <div class="tag-input-container" id="skills-offered"></div>
+        <input type="text" class="tag-input" data-target="skills-offered" placeholder="Add skill and press Enter">
+
+        <!-- Skills Wanted -->
+        <label>Skills Wanted</label>
+        <div class="tag-input-container" id="skills-wanted"></div>
+        <input type="text" class="tag-input" data-target="skills-wanted" placeholder="Add skill and press Enter">
+
+        <input type="hidden" name="skills_offered" id="skills_offered_input">
+        <input type="hidden" name="skills_wanted" id="skills_wanted_input">
+
+        <!-- Availability -->
+        <label for="availability">Availability</label>
+        <select id="availability" name="availability" required>
+          <option value="" disabled selected>Select Availability</option>
+          <option value="weekdays">Weekdays</option>
+          <option value="weekends">Weekends</option>
+          <option value="evenings">Evenings</option>
+          <option value="mornings">Mornings</option>
+          <option value="full-time">Full-Time</option>
+          <option value="part-time">Part-Time</option>
+          <option value="flexible">Flexible</option>
+        </select>
+
+        <!-- Public / Private -->
+        <label class="switch-label">Public Profile
+          <label class="switch">
+            <input type="checkbox" name="is_public" checked>
+            <span class="slider round"></span>
+          </label>
+        </label>
+
+        <label class="checkbox-container">
+          <input type="checkbox" required>
+          I accept the <span id="show-terms" class="terms-link">Terms and Conditions</span>.
+        </label>
+
+        <!-- Modal -->
+        <div id="terms-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Terms and Conditions</h3>
+            <p>By registering on our platform, you agree to our rules and responsibilities.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="register-btn">REGISTER NOW</button>
+        <p style="text-align:center; margin-top:10px;">Already have an account? <a href="{{ url_for('signin') }}">Login here</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='Signup.js') }}"></script>
+</body>
+</html>

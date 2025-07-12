@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile_card.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1 class="logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+        <span>Skilmate</span>
+      </h1>
+      <nav class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="User" class="avatar" />
+      </nav>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <div class="left">
+      <h2>{{ user.name }}</h2>
+
+      <div class="section">
+        <h3>Skills Offered</h3>
+        <p class="tag">Photoshop</p>
+        <p class="tag">Video Editing</p>
+      </div>
+
+      <div class="section">
+        <h3>Skills Wanted</h3>
+        <p class="tag">Python</p>
+        <p class="tag">JavaScript</p>
+      </div>
+
+      <div class="section">
+        <h3>Rating and Feedback</h3>
+        <div class="rating-box" id="ratingBox"></div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="photo-placeholder">
+        <img src="{{ user.profile_photo or url_for('static', filename='img/avatar.png') }}" alt="Profile Photo" style="width: 100%; height: auto; border-radius: 12px;" />
+        <br />
+        <small>(Upload / Edit)</small>
+      </div>
+      <button class="request-btn" onclick="event.preventDefault()">Request</button>
+    </div>
+  </div>
+
+  <!-- Request Modal -->
+  <div class="modal-overlay" id="requestModal">
+    <div class="modal-box">
+      <h3>Send Skill Request</h3>
+
+      <label>Choose one of your offered skills</label>
+      <select>
+        <option value="">Select skill</option>
+        <option>Photoshop</option>
+        <option>Editing</option>
+        <option>HTML</option>
+      </select>
+
+      <label>Choose one of their wanted skills</label>
+      <select>
+        <option value="">Select skill</option>
+        <option>Python</option>
+        <option>JavaScript</option>
+        <option>Design</option>
+      </select>
+
+      <label>Message</label>
+      <textarea rows="4" placeholder="Type your message..."></textarea>
+
+      <button class="submit-btn">Submit</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='profile_card.js') }}"></script>
+</body>
+</html>
